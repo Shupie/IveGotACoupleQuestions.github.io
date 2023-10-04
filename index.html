@@ -13,8 +13,13 @@
   <canvas id="canvas"></canvas>
 
   <script>
+    // Create a canvas element
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
+
+    // Set the canvas size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     // Create a class to represent a ball
     class Ball {
@@ -61,11 +66,11 @@
 
     // Create an array of balls
     const balls = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 500; i++) {
       const ball = new Ball(
         Math.random() * canvas.width,
         Math.random() * canvas.height,
-        10,
+        5,
         "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")"
       );
       balls.push(ball);
@@ -98,4 +103,5 @@
   </script>
 </body>
 </html>
+
 
