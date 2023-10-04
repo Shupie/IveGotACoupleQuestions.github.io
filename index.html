@@ -1,19 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Website</title>
-  <link rel="stylesheet" href="main.css">
+  <title>Moving Balls</title>
+  <style>
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
-    <h1>Task List</h1>
-    <p id="msg">Current tasks:</p>
-    <ul>
-      <li class="list">Add visual styles</li>
-      <li class="list">Add light and dark themes</li>
-      <li>Enable switching the theme</li>
-    </ul>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    // Create a class to represent a ball
+    class Ball {
+      constructor(x, y, radius, color) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+
+        this.vx = Math.random() * 5 - 2.5;
+        this.vy = Math.random() * 5 - 2.5;
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Check if the ball has hit the edge of the canvas
+        if (this.x < 0 || this.x > canvas.width) {
+          this.vx = -this.vx;
+        }
+        if (this.y < 0 || this.y > canvas.height) {
+          this.vy = -this.vy;
+        }
+      }
+    }
+
+    // Create an array of balls
+    const balls = [];
+    for (let i = 0; i < 100; i++) {
+      const ball = new Ball(
+        Math.random() * canvas.width,
+        Math.random() * canvas.height,
+        10,
+        "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")"
+      );
+      balls.push(ball);
+    }
+
+    // Animate the balls
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Clear the canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw and update each ball
+      for (const ball of balls) {
+        ball.draw();
+        ball.update();
+      }
+    }
+
+    // Start the animation
+    requestAnimationFrame(animate);
+  </script>
 </body>
 </html>
