@@ -46,6 +46,16 @@
         if (this.y < 0 || this.y > canvas.height) {
           this.vy = -this.vy;
         }
+
+        // Move the ball away from the mouse pointer
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+
+        const distance = Math.sqrt((mouseX - this.x) ** 2 + (mouseY - this.y) ** 2);
+        if (distance < 100) {
+          this.vx -= (mouseX - this.x) / distance;
+          this.vy -= (mouseY - this.y) / distance;
+        }
       }
     }
 
@@ -77,6 +87,15 @@
 
     // Start the animation
     requestAnimationFrame(animate);
+
+    // Add an event listener for mouse movement
+    document.addEventListener("mousemove", function(event) {
+      // Update the position of the balls
+      for (const ball of balls) {
+        ball.update();
+      }
+    });
   </script>
 </body>
 </html>
+
