@@ -3,11 +3,17 @@ canvas {
     height: 100%;
   }
   
-  .slider {
-    width: 100%;
+  .paddle {
+    position: absolute;
+    width: 10px;
+    height: 50px;
+    background-color: black;
   }
   
-  .button {
-    width: 100%;
+  .ball {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
   }
   
