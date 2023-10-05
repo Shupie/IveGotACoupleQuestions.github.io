@@ -1,36 +1,24 @@
-// Get the text area element
-const textArea = document.querySelector("#text-area");
+// Get the canvas element
+const canvas = document.querySelector("#canvas");
 
-// Create an array of random words
-const words = ["Lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna", "aliqua"];
+// Get the canvas context
+const ctx = canvas.getContext("2d");
 
-// Create a flag to indicate whether the text generator is running
-let isRunning = false;
+// Create an array of random colors
+const colors = ["red", "green", "blue", "yellow", "pink", "orange", "purple"];
 
-// Start the text generator when the user clicks on the screen
-document.addEventListener("click", function() {
-  isRunning = true;
-  generateText();
-});
+// Start the animation loop
+function animate() {
+  // Clear the canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-// Stop the text generator when the user clicks on the screen again
-document.addEventListener("click", function() {
-  isRunning = false;
-});
+  // Draw a random colored rectangle at a random position
+  ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+  ctx.fillRect(Math.floor(Math.random() * canvas.width), Math.floor(Math.random() * canvas.height), 10, 10);
 
-// Generate random text
-function generateText() {
-  // Get a random word from the array
-  const word = words[Math.floor(Math.random() * words.length)];
-
-  // Add the word to the text area
-  textArea.textContent += word + " ";
-
-  // If the text generator is still running, request the next animation frame
-  if (isRunning) {
-    requestAnimationFrame(generateText);
-  }
+  // Request the next animation frame
+  requestAnimationFrame(animate);
 }
 
-// Start the text generator when the page loads
-window.addEventListener("load", generateText);
+// Start the animation loop
+animate();
