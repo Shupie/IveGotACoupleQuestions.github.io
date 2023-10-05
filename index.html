@@ -66,6 +66,11 @@
         ball.vy *= -1;
       }
 
+      // Check if the ball hits the left or right side of the canvas
+      if (ball.x < ball.radius || ball.x > canvas.width - ball.radius) {
+        ball.vx *= -1;
+      }
+
       // Check if the ball hits the paddle
       if (
         ball.x > paddle.x &&
