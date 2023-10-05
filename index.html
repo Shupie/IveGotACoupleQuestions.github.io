@@ -11,9 +11,19 @@
       display: block;
       margin: 0 auto;
     }
+    #boundaries {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid black;
+      z-index: -1;
+    }
   </style>
 </head>
 <body>
+  <div id="boundaries"></div>
   <canvas id="canvas" width="500" height="500"></canvas>
   <script>
     // Get the canvas element
@@ -106,12 +116,13 @@
     });
 
     document.addEventListener("click", function () {
-      // Generate a new random trajectory for the square
+      // Generate a new random trajectory for the
       square.vx = Math.random() * 10;
-      square.vy = Math.random() * 10;
+    square.vy = Math.random() * 10;
 
-      // Stop the screen flashing
-      isFlashing = false;
+    // Reset the square's position to the center of the canvas
+    square.x = canvas.width / 2;
+    square.y = canvas.height / 2;
     });
   </script>
 </body>
