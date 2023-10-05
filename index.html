@@ -27,8 +27,8 @@
       x: canvas.width / 2,
       y: canvas.height / 2,
       size: 20,
-      vx: 5,
-      vy: 5,
+      vx: 0,
+      vy: 0,
     };
 
     // Create a flag to indicate whether the square is flashing
@@ -95,16 +95,23 @@
     // Start the game loop
     gameLoop();
 
-    // Reset the game when the user clicks
-    document.addEventListener("click", function () {
+    // Reset the game when the webpage is refreshed or the user clicks
+    window.addEventListener("load", function () {
+      // Generate a new random trajectory for the square
+      square.vx = Math.random() * 10;
+      square.vy = Math.random() * 10;
+
       // Stop the screen flashing
       isFlashing = false;
+    });
 
-      // Reset the square's position and velocity
-      square.x = canvas.width / 2;
-      square.y = canvas.height / 2;
-      square.vx = 5;
-      square.vy = 5;
+    document.addEventListener("click", function () {
+      // Generate a new random trajectory for the square
+      square.vx = Math.random() * 10;
+      square.vy = Math.random() * 10;
+
+      // Stop the screen flashing
+      isFlashing = false;
     });
   </script>
 </body>
