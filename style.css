@@ -1,5 +1,28 @@
 body {
   margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at center, #355C7D, #6C5B7B, #C06C84);
+  background-size: 400% 400%;
+  animation: moveGradient 20s ease infinite;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+body {
+  margin: 0;
   background-color: #007BFF; /* blue background */
   display: flex;
   flex-direction: column;
