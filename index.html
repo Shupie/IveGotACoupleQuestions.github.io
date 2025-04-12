@@ -24,35 +24,30 @@
       }, 600);
     });
 
-    // Sparkles on arrow click
-    const sparkleTrigger = document.querySelector(".sparkle-trigger");
+    // Sparkles follow mouse
+    document.body.addEventListener("mousemove", function (e) {
+      const sparkle = document.createElement("span");
+      sparkle.className = "sparkle";
+      sparkle.style.left = `${e.clientX}px`;
+      sparkle.style.top = `${e.clientY}px`;
+      document.body.appendChild(sparkle);
 
-    sparkleTrigger.addEventListener("click", (e) => {
-      const sparkles = 15;
-      const originX = e.clientX;
-      const originY = e.clientY;
+      setTimeout(() => {
+        sparkle.remove();
+      }, 600); // Sparkle lasts for 0.6s
+    });
 
-      for (let i = 0; i < sparkles; i++) {
-        const sparkle = document.createElement("span");
-        sparkle.className = "sparkle";
-        sparkle.style.left = originX + "px";
-        sparkle.style.top = originY + "px";
+    // Star effect on click
+    document.body.addEventListener("click", function (e) {
+      const star = document.createElement("span");
+      star.className = "star";
+      star.style.left = `${e.clientX - 10}px`; 
+      star.style.top = `${e.clientY - 10}px`;
+      document.body.appendChild(star);
 
-        const angle = Math.random() * 2 * Math.PI;
-        const radius = 50 + Math.random() * 30;
-
-        const x = Math.cos(angle) * radius + "px";
-        const y = Math.sin(angle) * radius + "px";
-
-        sparkle.style.setProperty("--x", x);
-        sparkle.style.setProperty("--y", y);
-
-        document.body.appendChild(sparkle);
-
-        setTimeout(() => {
-          sparkle.remove();
-        }, 600);
-      }
+      setTimeout(() => {
+        star.remove();
+      }, 5000); // Star will last for 5 seconds before disappearing
     });
   </script>
 </body>
