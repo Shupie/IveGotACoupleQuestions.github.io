@@ -5,7 +5,7 @@ body {
   background: radial-gradient(circle at center, #355C7D, #6C5B7B, #C06C84);
   background-size: 400% 400%;
   overflow: hidden;
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Dancing Script', cursive;
   color: white;
   display: flex;
   flex-direction: column;
@@ -16,13 +16,6 @@ body {
   cursor: pointer;
   transition: background-position 0.1s;
 }
-
-/* Gradient shifting (disabled keyframes, now JS controlled) */
-/* @keyframes moveGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-} */
 
 /* === Question Text === */
 .question {
@@ -48,7 +41,7 @@ body {
 .ripple {
   position: absolute;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.6);
   transform: scale(0);
   animation: ripple-effect 0.6s linear;
   pointer-events: none;
@@ -57,7 +50,7 @@ body {
 
 @keyframes ripple-effect {
   to {
-    transform: scale(15);
+    transform: scale(20);
     opacity: 0;
   }
 }
@@ -65,8 +58,8 @@ body {
 /* === Sparkle === */
 .sparkle {
   position: absolute;
-  width: 5px;
-  height: 5px;
+  width: 10px; /* Increased size */
+  height: 10px; /* Increased size */
   background: white;
   border-radius: 50%;
   pointer-events: none;
@@ -83,4 +76,15 @@ body {
     opacity: 0;
     transform: scale(0.5) translate(var(--x), var(--y));
   }
+}
+
+/* === Star Effect === */
+.star {
+  position: absolute;
+  width: 20px; /* Star size */
+  height: 20px; /* Star size */
+  background: white;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  pointer-events: none;
+  z-index: 1000;
 }
