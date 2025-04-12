@@ -6,7 +6,7 @@ body {
   background-size: 400% 400%;
   animation: moveGradient 20s ease infinite;
   overflow: hidden;
-  font-family: 'Dancing Script', cursive; /* Cursive font */
+  font-family: 'La Belle Aurore', cursive; /* Cursive font similar to La La Land poster */
   color: white;
   display: flex;
   flex-direction: column;
@@ -25,30 +25,9 @@ body {
 
 /* === Question Text === */
 .question {
-  font-size: 3em;
+  font-size: 2.5em;
   margin-bottom: 40px;
   z-index: 1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* === Final Question Styling === */
-.final {
-  font-size: 4em; /* Larger size for question 4 */
-  margin-bottom: 0;
-  animation: fadeIn 3s ease forwards;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8);
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 /* === Arrow Link === */
@@ -64,7 +43,7 @@ body {
   transform: translateY(5px);
 }
 
-/* === Ripple on Click === */
+/* === Ripple Effect on Click === */
 .ripple {
   position: absolute;
   border-radius: 50%;
@@ -85,12 +64,12 @@ body {
 /* === Sparkle Effect === */
 .sparkle {
   position: absolute;
-  width: 20px; /* Increased size for more pronounced effect */
-  height: 20px;
-  background: rgba(255, 255, 255, 0.8);
+  width: 10px;
+  height: 10px;
+  background: white;
   border-radius: 50%;
   pointer-events: none;
-  animation: sparkle 1.5s ease-out forwards;
+  animation: sparkle 0.6s ease-out forwards;
   z-index: 999;
 }
 
@@ -105,36 +84,58 @@ body {
   }
 }
 
-/* === Star Effect (for click) === */
+/* === Stars Effect === */
 .star {
   position: absolute;
-  width: 25px;
-  height: 25px;
-  background: url('https://cdn.pixabay.com/photo/2017/08/30/03/10/star-2695553_960_720.png') no-repeat center center;
-  background-size: contain;
+  width: 5px;
+  height: 5px;
+  background: white;
+  border-radius: 50%;
   pointer-events: none;
-  animation: star-animation 5s ease-out forwards;
-  z-index: 1000;
+  animation: star 3s ease-out forwards;
+  z-index: 999;
 }
 
-@keyframes star-animation {
+@keyframes star {
   0% {
-    transform: scale(1) translate(0, 0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.5) translate(var(--x), var(--y));
     opacity: 0;
   }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate(var(--x), var(--y));
+  }
 }
 
-/* === Continuous Sparkles on Final Question === */
+/* === Final Question Styling === */
+.final {
+  font-size: 4em; /* Larger size for the last question */
+  margin-bottom: 0;
+  animation: fadeIn 5s ease forwards;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  color: white;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* === Sparkles for Final Page === */
 .final .sparkle {
+  width: 15px;
+  height: 15px;
   animation: sparkle 1s ease-out infinite;
 }
 
-/* === Permanent Stars on Last Page === */
-.final .star {
-  animation: none; /* No animation, stars stay on the screen */
-  opacity: 1; /* Keep stars visible permanently */
+/* === Additional Style for Body when Typing Final Question === */
+body {
+  font-family: 'La Belle Aurore', cursive; /* Make sure to load the correct font */
 }
+
