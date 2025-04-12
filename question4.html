@@ -23,12 +23,25 @@
       }, 600);
     });
 
-    // Star effect when clicking or tapping anywhere on the page
+    // Sparkles following mouse
+    document.body.addEventListener("mousemove", function (e) {
+      const sparkle = document.createElement("span");
+      sparkle.className = "sparkle";
+      sparkle.style.left = `${e.clientX}px`;
+      sparkle.style.top = `${e.clientY}px`;
+      document.body.appendChild(sparkle);
+
+      setTimeout(() => {
+        sparkle.remove();
+      }, 600); // Sparkle lasts for 0.6s
+    });
+
+    // Star effect on click
     document.body.addEventListener("click", function (e) {
       const star = document.createElement("span");
       star.className = "star";
-      star.style.left = `${e.clientX - 10}px`; /* Adjust for centering */
-      star.style.top = `${e.clientY - 10}px`; /* Adjust for centering */
+      star.style.left = `${e.clientX - 10}px`; 
+      star.style.top = `${e.clientY - 10}px`;
       document.body.appendChild(star);
 
       setTimeout(() => {
@@ -38,4 +51,3 @@
   </script>
 </body>
 </html>
-
