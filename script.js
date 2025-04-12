@@ -57,7 +57,7 @@ document.body.addEventListener("click", function (e) {
   }, 5000);
 });
 
-// Continuous random stars appearing over time (for all pages except the last page)
+// Function to create random stars on all pages except the last page
 setInterval(() => {
   const star = document.createElement("span");
   star.className = "star";
@@ -81,4 +81,36 @@ if (window.location.pathname.includes("question4.html")) {
 
     document.body.appendChild(star);
   }, 3000);
+}
+
+// Typing effect for final question
+if (window.location.pathname.includes("question4.html")) {
+  const questionElement = document.querySelector('.final');
+  const questionText = "Can I be your boyfriend?";
+  let index = 0;
+
+  function typeWriter() {
+    if (index < questionText.length) {
+      questionElement.textContent += questionText.charAt(index);
+      index++;
+      setTimeout(typeWriter, 100); // Adjust typing speed here
+    }
+  }
+
+  typeWriter();
+
+  // Continuously create sparkles following the text being written
+  setInterval(() => {
+    const sparkle = document.createElement("span");
+    sparkle.className = "sparkle";
+    const x = Math.random() * window.innerWidth + "px";
+    const y = Math.random() * window.innerHeight + "px";
+    sparkle.style.left = x;
+    sparkle.style.top = y;
+
+    document.body.appendChild(sparkle);
+    setTimeout(() => {
+      sparkle.remove();
+    }, 1500);
+  }, 100); // Sparkles will appear every 100ms
 }
