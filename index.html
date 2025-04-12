@@ -3,29 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Question 1</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="question">What is your favorite color?</div>
-  <a href="question2.html" class="arrow sparkle-trigger">⬇</a>
+  <a href="question2.html" class="arrow">⬇</a>
 
   <script>
-    // Ripple and sparkle effect on any click/tap
-    document.body.addEventListener("click", function (e) {
-      const x = e.clientX || e.touches?.[0]?.clientX;
-      const y = e.clientY || e.touches?.[0]?.clientY;
-
-      // Ripple
-      const ripple = document.createElement("span");
-      ripple.className = "ripple";
-      ripple.style.left = x + "px";
-      ripple.style.top = y + "px";
-      document.body.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
-
-      // Sparkles
-      const sparkles = 15;
+    // Helper: make sparkles at (x, y)
+    function createSparkles(x, y) {
+      const sparkles = 10;
       for (let i = 0; i < sparkles; i++) {
         const sparkle = document.createElement("span");
         sparkle.className = "sparkle";
@@ -33,7 +21,7 @@
         sparkle.style.top = y + "px";
 
         const angle = Math.random() * 2 * Math.PI;
-        const radius = 50 + Math.random() * 30;
+        const radius = 30 + Math.random() * 20;
         const offsetX = Math.cos(angle) * radius + "px";
         const offsetY = Math.sin(angle) * radius + "px";
 
@@ -43,7 +31,55 @@
         document.body.appendChild(sparkle);
         setTimeout(() => sparkle.remove(), 600);
       }
+    }
+
+    // Ripple & sparkle on click
+    document.body.addEventListener("click", function (e) {
+      const x = e.clientX || e.touches?.[0]?.clientX;
+      const y = e.clientY || e.touches?.[0]?.clientY;
+
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+      ripple.style.left = x + "px";
+      ripple.style.top = y + "px";
+      document.body.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+
+      createSparkles(x, y);
     });
+
+    // Sparkles on move
+    document.body.addEventListener("mousemove", (e) => {
+      createSparkles(e.clientX, e.clientY);
+    });
+
+    document.body.addEventListener("touchmove", (e) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        createSparkles(touch.clientX, touch.clientY);
+      }
+    });
+
+    // Move background based on mouse or device orientation
+    function updateBackgroundPosition(xRatio, yRatio) {
+      const xPercent = 50 + xRatio * 50;
+      const yPercent = 50 + yRatio * 50;
+      document.body.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+    }
+
+    document.addEventListener("mousemove", (e) => {
+      const xRatio = (e.clientX / window.innerWidth) - 0.5;
+      const yRatio = (e.clientY / window.innerHeight) - 0.5;
+      updateBackgroundPosition(xRatio, yRatio);
+    });
+
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener("deviceorientation", (e) => {
+        const xRatio = e.gamma / 45;  // left/right tilt
+        const yRatio = e.beta / 45;   // front/back tilt
+        updateBackgroundPosition(xRatio, yRatio);
+      });
+    }
   </script>
 </body>
 </html>
