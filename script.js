@@ -70,4 +70,3 @@ setInterval(() => {
     star.remove();
   }, 5000);
 }, 3000);
-
