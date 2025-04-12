@@ -6,7 +6,7 @@ body {
   background-size: 400% 400%;
   animation: moveGradient 20s ease infinite;
   overflow: hidden;
-  font-family: 'La Belle Aurore', cursive; /* Cursive font similar to La La Land poster */
+  font-family: 'La Belle Aurore', cursive;
   color: white;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ body {
 
 /* === Common Question Styling === */
 .question {
-  font-size: 3.5em; /* Slightly smaller font for all questions */
+  font-size: 2em; /* Significantly smaller font */
   margin-bottom: 40px;
   z-index: 1;
   animation: fadeIn 5s ease forwards;
@@ -36,19 +36,15 @@ body {
 }
 
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /* === Final Question Styling === */
 .final {
-  font-size: 5.5em; /* Slightly smaller size for the final question */
+  font-size: 3em; /* Smaller final question font */
   margin-bottom: 0;
-  animation: fadeIn 5s ease forwards;
+  animation: fadeIn 6s ease forwards;
   text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8);
   white-space: nowrap;
   overflow: hidden;
@@ -56,31 +52,15 @@ body {
   color: white;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* === Sparkles for Final Page === */
-.final .sparkle {
-  width: 15px;
-  height: 15px;
-  animation: sparkle 1s ease-out infinite;
-}
-
-/* === Sparkles Following Mouse === */
+/* === Sparkles Following Mouse / Touch === */
 .sparkle {
   position: absolute;
-  width: 12px; /* Larger sparkle size */
-  height: 12px; /* Larger sparkle size */
+  width: 10px;
+  height: 10px;
   background: white;
   border-radius: 50%;
   pointer-events: none;
-  animation: sparkle 0.4s ease-out forwards; /* Faster animation for more frequent sparkles */
+  animation: sparkle 0.4s ease-out forwards;
   z-index: 999;
 }
 
@@ -95,11 +75,11 @@ body {
   }
 }
 
-/* === Stars Effect === */
+/* === Stars === */
 .star {
   position: absolute;
-  width: 8px; /* Larger stars */
-  height: 8px; /* Larger stars */
+  width: 7px;
+  height: 7px;
   background: white;
   border-radius: 50%;
   pointer-events: none;
