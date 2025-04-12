@@ -6,7 +6,7 @@ body {
   background-size: 400% 400%;
   animation: moveGradient 20s ease infinite;
   overflow: hidden;
-  font-family: 'Dancing Script', cursive; /* La La Land-inspired font */
+  font-family: 'Dancing Script', cursive;
   color: white;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,20 @@ body {
   font-size: 3em;
   margin-bottom: 40px;
   z-index: 1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow to the text */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* === Final Question Styling === */
+.final {
+  font-size: 4em; /* Larger size for question 4 */
+  margin-bottom: 0;
+  animation: fadeIn 3s ease forwards;
+  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px #fff; /* Permanent white sparkle effect */
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /* === Arrow Link === */
@@ -65,8 +78,8 @@ body {
 /* === Sparkle Effect === */
 .sparkle {
   position: absolute;
-  width: 15px; /* Larger sparkle size */
-  height: 15px; /* Larger sparkle size */
+  width: 15px;
+  height: 15px;
   background: white;
   border-radius: 50%;
   pointer-events: none;
@@ -85,14 +98,14 @@ body {
   }
 }
 
-/* === Star Effect (random position stars) === */
+/* === Star Effect === */
 .star {
   position: absolute;
-  width: 20px;  /* Adjusted star size */
-  height: 20px; /* Adjusted star size */
+  width: 20px;
+  height: 20px;
   background-color: white;
   border-radius: 50%;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.8); /* Glowing effect */
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.8);
   animation: star-fade 5s ease-out forwards;
 }
 
