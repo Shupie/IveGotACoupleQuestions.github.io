@@ -61,7 +61,7 @@ body {
   }
 }
 
-/* === Sparkle on Arrow Click === */
+/* === Sparkle on Click === */
 .sparkle {
   position: absolute;
   width: 5px;
@@ -83,4 +83,3 @@ body {
     transform: scale(0.5) translate(var(--x), var(--y));
   }
 }
-
