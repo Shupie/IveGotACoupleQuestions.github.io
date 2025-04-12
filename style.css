@@ -25,7 +25,7 @@ body {
 
 /* === Common Question Styling === */
 .question {
-  font-size: 4em; /* Larger font for all questions */
+  font-size: 3.5em; /* Slightly smaller font for all questions */
   margin-bottom: 40px;
   z-index: 1;
   animation: fadeIn 5s ease forwards;
@@ -46,7 +46,7 @@ body {
 
 /* === Final Question Styling === */
 .final {
-  font-size: 6em; /* Larger size for the final question */
+  font-size: 5.5em; /* Slightly smaller size for the final question */
   margin-bottom: 0;
   animation: fadeIn 5s ease forwards;
   text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8);
