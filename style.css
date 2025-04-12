@@ -6,7 +6,7 @@ body {
   background-size: 400% 400%;
   animation: moveGradient 20s ease infinite;
   overflow: hidden;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Dancing Script', cursive; /* Cursive font */
   color: white;
   display: flex;
   flex-direction: column;
