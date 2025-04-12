@@ -57,7 +57,7 @@ document.body.addEventListener("click", function (e) {
   }, 5000);
 });
 
-// Continuous random stars appearing over time
+// Continuous random stars appearing over time (for all pages except the last page)
 setInterval(() => {
   const star = document.createElement("span");
   star.className = "star";
@@ -70,3 +70,15 @@ setInterval(() => {
     star.remove();
   }, 5000);
 }, 3000);
+
+// Function to create permanent stars for the final page (question 4)
+if (window.location.pathname.includes("question4.html")) {
+  setInterval(() => {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.top = Math.random() * window.innerHeight + "px";
+
+    document.body.appendChild(star);
+  }, 3000);
+}
