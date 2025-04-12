@@ -36,4 +36,121 @@ body {
   font-size: 4em; /* Larger size for question 4 */
   margin-bottom: 0;
   animation: fadeIn 3s ease forwards;
-  text-shadow: 0 0 10px
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* === Arrow Link === */
+.arrow {
+  font-size: 3em;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.arrow:hover {
+  transform: translateY(5px);
+}
+
+/* === Ripple on Click === */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple-effect 0.6s linear;
+  pointer-events: none;
+  z-index: 999;
+}
+
+@keyframes ripple-effect {
+  to {
+    transform: scale(15);
+    opacity: 0;
+  }
+}
+
+/* === Sparkle Effect === */
+.sparkle {
+  position: absolute;
+  width: 20px; /* Increased size for more pronounced effect */
+  height: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkle 1.5s ease-out forwards;
+  z-index: 999;
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translate(var(--x), var(--y));
+  }
+}
+
+/* === Star Effect (for click) === */
+.star {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: url('https://cdn.pixabay.com/photo/2017/08/30/03/10/star-2695553_960_720.png') no-repeat center center;
+  background-size: contain;
+  pointer-events: none;
+  animation: star-animation 5s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes star-animation {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5) translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+/* === Continuous Sparkles on Final Question === */
+.final .sparkle {
+  animation: sparkle 1s ease-out infinite;
+}
+
+@keyframes continuous-sparkles {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5) translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+/* === Animation for Stars to slowly fade out over time === */
+.star {
+  animation: fadeStar 5s forwards;
+}
+
+@keyframes fadeStar {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
