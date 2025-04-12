@@ -7,90 +7,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="question">What is your dream vacation destination?</div>
-  <a href="question3.html" class="arrow">⬇</a>
+  <div class="question">What's the first thing you told your friends about me?</div>
+  <a href="question3.html" class="arrow sparkle-trigger">⬇</a>
 
   <script>
-    // Helper: make sparkles at (x, y)
-    function createSparkles(x, y) {
-      const sparkles = 15; // Increased number of sparkles
+    // Ripple effect on body click
+    document.body.addEventListener("click", function (e) {
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+      ripple.style.left = e.clientX + "px";
+      ripple.style.top = e.clientY + "px";
+      document.body.appendChild(ripple);
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+
+    // Sparkles on arrow click
+    const sparkleTrigger = document.querySelector(".sparkle-trigger");
+
+    sparkleTrigger.addEventListener("click", (e) => {
+      const sparkles = 15;
+      const originX = e.clientX;
+      const originY = e.clientY;
+
       for (let i = 0; i < sparkles; i++) {
         const sparkle = document.createElement("span");
         sparkle.className = "sparkle";
-        sparkle.style.left = x + "px";
-        sparkle.style.top = y + "px";
+        sparkle.style.left = originX + "px";
+        sparkle.style.top = originY + "px";
 
         const angle = Math.random() * 2 * Math.PI;
-        const radius = 50 + Math.random() * 30; // Increased radius for bigger sparkles
-        const offsetX = Math.cos(angle) * radius + "px";
-        const offsetY = Math.sin(angle) * radius + "px";
+        const radius = 50 + Math.random() * 30;
 
-        sparkle.style.setProperty("--x", offsetX);
-        sparkle.style.setProperty("--y", offsetY);
+        const x = Math.cos(angle) * radius + "px";
+        const y = Math.sin(angle) * radius + "px";
+
+        sparkle.style.setProperty("--x", x);
+        sparkle.style.setProperty("--y", y);
 
         document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 600);
-      }
-    }
 
-    // Create a white star at a random position
-    function createStar() {
-      const star = document.createElement("div");
-      star.className = "star";
-      star.style.left = `${Math.random() * window.innerWidth}px`;
-      star.style.top = `${Math.random() * window.innerHeight}px`;
-      document.body.appendChild(star);
-      setTimeout(() => star.remove(), 5000); // Star disappears after 5 seconds
-    }
-
-    // Ripple & sparkle on click
-    document.body.addEventListener("click", function (e) {
-      const x = e.clientX || e.touches?.[0]?.clientX;
-      const y = e.clientY || e.touches?.[0]?.clientY;
-
-      const ripple = document.createElement("span");
-      ripple.className = "ripple";
-      ripple.style.left = x + "px";
-      ripple.style.top = y + "px";
-      document.body.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
-
-      createSparkles(x, y);
-      createStar(); // Add a star on click
-    });
-
-    // Sparkles on move
-    document.body.addEventListener("mousemove", (e) => {
-      createSparkles(e.clientX, e.clientY);
-    });
-
-    document.body.addEventListener("touchmove", (e) => {
-      if (e.touches.length > 0) {
-        const touch = e.touches[0];
-        createSparkles(touch.clientX, touch.clientY);
+        setTimeout(() => {
+          sparkle.remove();
+        }, 600);
       }
     });
-
-    // Move background based on mouse or device orientation
-    function updateBackgroundPosition(xRatio, yRatio) {
-      const xPercent = 50 + xRatio * 50;
-      const yPercent = 50 + yRatio * 50;
-      document.body.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
-    }
-
-    document.addEventListener("mousemove", (e) => {
-      const xRatio = (e.clientX / window.innerWidth) - 0.5;
-      const yRatio = (e.clientY / window.innerHeight) - 0.5;
-      updateBackgroundPosition(xRatio, yRatio);
-    });
-
-    if (window.DeviceOrientationEvent) {
-      window.addEventListener("deviceorientation", (e) => {
-        const xRatio = e.gamma / 45;  // left/right tilt
-        const yRatio = e.beta / 45;   // front/back tilt
-        updateBackgroundPosition(xRatio, yRatio);
-      });
-    }
   </script>
 </body>
 </html>
