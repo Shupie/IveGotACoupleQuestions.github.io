@@ -140,3 +140,9 @@ body {
     opacity: 0;
   }
 }
+
+/* === Permanent Stars on Last Page === */
+.final .star {
+  animation: none; /* No animation, stars stay on the screen */
+  opacity: 1; /* Keep stars visible permanently */
+}
