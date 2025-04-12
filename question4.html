@@ -4,10 +4,36 @@
   <meta charset="UTF-8">
   <title>Question 4</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="question final">Can I be your boyfriend?</div>
+  <!-- Final Question Text -->
+  <div class="final" id="final-question">Can I be your boyfriend?</div>
 
-  <script src="script.js"></script>
+  <script>
+    // Add sparkles that fall slowly from the top on the final page
+    document.body.addEventListener("mousemove", function (e) {
+      const sparkle = document.createElement("span");
+      sparkle.className = "sparkle";
+      sparkle.style.left = e.clientX + "px";
+      sparkle.style.top = e.clientY + "px";
+      document.body.appendChild(sparkle);
+
+      setTimeout(() => {
+        sparkle.remove();
+      }, 800);
+    });
+
+    // Add random stars over time
+    setInterval(function () {
+      const star = document.createElement("span");
+      star.className = "star";
+      star.style.left = Math.random() * window.innerWidth + "px";
+      star.style.top = Math.random() * window.innerHeight + "px";
+      star.style.setProperty('--x', Math.random() * 200 - 100 + "px");
+      star.style.setProperty('--y', Math.random() * 200 - 100 + "px");
+      document.body.appendChild(star);
+    }, 200);
+  </script>
 </body>
 </html>
