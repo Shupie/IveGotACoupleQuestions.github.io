@@ -4,22 +4,57 @@
   <meta charset="UTF-8">
   <title>Question 2</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="question">What is your dream vacation destination?</div>
-  <a href="question3.html" class="arrow">⬇</a>
-</body>
-  <script>
-  document.body.addEventListener("click", function (e) {
-    const ripple = document.createElement("span");
-    ripple.className = "ripple";
-    ripple.style.left = e.clientX + "px";
-    ripple.style.top = e.clientY + "px";
-    document.body.appendChild(ripple);
+  <a href="question3.html" class="arrow sparkle-trigger">⬇</a>
 
-    setTimeout(() => {
-      ripple.remove();
-    }, 600);
-  });
-</script>
+  <script>
+    // Ripple effect on body click
+    document.body.addEventListener("click", function (e) {
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+      ripple.style.left = e.clientX + "px";
+      ripple.style.top = e.clientY + "px";
+      document.body.appendChild(ripple);
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+
+    // Sparkles on arrow click
+    const sparkleTrigger = document.querySelector(".sparkle-trigger");
+
+    sparkleTrigger.addEventListener("click", (e) => {
+      const sparkles = 15;
+      const originX = e.clientX;
+      const originY = e.clientY;
+
+      for (let i = 0; i < sparkles; i++) {
+        const sparkle = document.createElement("span");
+        sparkle.className = "sparkle";
+        sparkle.style.left = originX + "px";
+        sparkle.style.top = originY + "px";
+
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = 50 + Math.random() * 30;
+
+        const x = Math.cos(angle) * radius + "px";
+        const y = Math.sin(angle) * radius + "px";
+
+        sparkle.style.setProperty("--x", x);
+        sparkle.style.setProperty("--y", y);
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => {
+          sparkle.remove();
+        }, 600);
+      }
+    });
+  </script>
+</body>
 </html>
+
