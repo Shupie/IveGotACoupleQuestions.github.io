@@ -11,50 +11,39 @@
   <a href="question3.html" class="arrow sparkle-trigger">⬇</a>
 
   <script>
-    // Ripple effect on body click
+    // Ripple and sparkle effect on any click/tap
     document.body.addEventListener("click", function (e) {
+      const x = e.clientX || e.touches?.[0]?.clientX;
+      const y = e.clientY || e.touches?.[0]?.clientY;
+
+      // Ripple
       const ripple = document.createElement("span");
       ripple.className = "ripple";
-      ripple.style.left = e.clientX + "px";
-      ripple.style.top = e.clientY + "px";
+      ripple.style.left = x + "px";
+      ripple.style.top = y + "px";
       document.body.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
 
-      setTimeout(() => {
-        ripple.remove();
-      }, 600);
-    });
-
-    // Sparkles on arrow click
-    const sparkleTrigger = document.querySelector(".sparkle-trigger");
-
-    sparkleTrigger.addEventListener("click", (e) => {
+      // Sparkles
       const sparkles = 15;
-      const originX = e.clientX;
-      const originY = e.clientY;
-
       for (let i = 0; i < sparkles; i++) {
         const sparkle = document.createElement("span");
         sparkle.className = "sparkle";
-        sparkle.style.left = originX + "px";
-        sparkle.style.top = originY + "px";
+        sparkle.style.left = x + "px";
+        sparkle.style.top = y + "px";
 
         const angle = Math.random() * 2 * Math.PI;
         const radius = 50 + Math.random() * 30;
+        const offsetX = Math.cos(angle) * radius + "px";
+        const offsetY = Math.sin(angle) * radius + "px";
 
-        const x = Math.cos(angle) * radius + "px";
-        const y = Math.sin(angle) * radius + "px";
-
-        sparkle.style.setProperty("--x", x);
-        sparkle.style.setProperty("--y", y);
+        sparkle.style.setProperty("--x", offsetX);
+        sparkle.style.setProperty("--y", offsetY);
 
         document.body.appendChild(sparkle);
-
-        setTimeout(() => {
-          sparkle.remove();
-        }, 600);
+        setTimeout(() => sparkle.remove(), 600);
       }
     });
   </script>
 </body>
 </html>
-
