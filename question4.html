@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 4</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="question final">Can I be your boyfriend?</div>
+
+  <script>
+    // Ripple effect on body click
+    document.body.addEventListener("click", function (e) {
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+      ripple.style.left = e.clientX + "px";
+      ripple.style.top = e.clientY + "px";
+      document.body.appendChild(ripple);
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+
+    // Star effect when clicking or tapping anywhere on the page
+    document.body.addEventListener("click", function (e) {
+      const star = document.createElement("span");
+      star.className = "star";
+      star.style.left = `${e.clientX - 10}px`; /* Adjust for centering */
+      star.style.top = `${e.clientY - 10}px`; /* Adjust for centering */
+      document.body.appendChild(star);
+
+      setTimeout(() => {
+        star.remove();
+      }, 5000); // Star will last for 5 seconds before disappearing
+    });
+  </script>
+</body>
+</html>
 
