@@ -23,45 +23,35 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* === Question Text === */
-.question {
-  font-size: 2.5em;
-  margin-bottom: 40px;
-  z-index: 1;
-}
-
-/* === Arrow Link === */
-.arrow {
-  font-size: 3em;
-  text-decoration: none;
+/* === Final Question Styling === */
+.final {
+  font-size: 4em; /* Larger size for the last question */
+  margin-bottom: 0;
+  animation: fadeIn 5s ease forwards;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
   color: white;
-  transition: transform 0.3s ease;
-  z-index: 1;
 }
 
-.arrow:hover {
-  transform: translateY(5px);
-}
-
-/* === Ripple Effect on Click === */
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  transform: scale(0);
-  animation: ripple-effect 0.6s linear;
-  pointer-events: none;
-  z-index: 999;
-}
-
-@keyframes ripple-effect {
-  to {
-    transform: scale(15);
+@keyframes fadeIn {
+  0% {
     opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
-/* === Sparkle Effect === */
+/* === Sparkles for Final Page === */
+.final .sparkle {
+  width: 15px;
+  height: 15px;
+  animation: sparkle 1s ease-out infinite;
+}
+
+/* === Sparkles Following Mouse === */
 .sparkle {
   position: absolute;
   width: 10px;
@@ -105,37 +95,3 @@ body {
     transform: scale(1) translate(var(--x), var(--y));
   }
 }
-
-/* === Final Question Styling === */
-.final {
-  font-size: 4em; /* Larger size for the last question */
-  margin-bottom: 0;
-  animation: fadeIn 5s ease forwards;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8);
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-  color: white;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* === Sparkles for Final Page === */
-.final .sparkle {
-  width: 15px;
-  height: 15px;
-  animation: sparkle 1s ease-out infinite;
-}
-
-/* === Additional Style for Body when Typing Final Question === */
-body {
-  font-family: 'La Belle Aurore', cursive; /* Make sure to load the correct font */
-}
-
